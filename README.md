@@ -1,11 +1,42 @@
 <p align="center"><a href="https://github.com/ananikomlanMH/word-for-laravel" target="_blank"><img src="/art/logo.svg" width="400"></a></p>
 
+[![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208.1-777bb4?style=flat-square&logo=php)](https://www.php.net/supported-versions.php)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE.md)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ananikomlanmh/word-for-laravel.svg?style=flat-square)](https://packagist.org/packages/ananikomlanmh/word-for-laravel)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ananikomlanmh/word-for-laravel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ananikomlanmh/word-for-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ananikomlanmh/word-for-laravel/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ananikomlanmh/word-for-laravel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ananikomlanmh/word-for-laravel.svg?style=flat-square)](https://packagist.org/packages/ananikomlanmh/word-for-laravel)
 
 Generate Word documents (.docx) from Laravel Blade templates using PHPWord under the hood. This package provides an elegant API for creating professional Word documents with the full power of Blade templating.
+
+## Table of Contents
+
+- **[Requirements](#requirements)**
+- **[Installation](#installation)**
+- **[Basic Usage](#basic-usage)**
+  - [Simple Document Generation](#simple-document-generation)
+  - [Saving to Disk](#saving-to-disk)
+  - [Setting Document Properties](#setting-document-properties)
+  - [Controller Example](#controller-example)
+- **[Creating Word Templates](#creating-word-templates)**
+  - [Using Artisan Command](#using-artisan-command)
+  - [Template Structure](#template-structure)
+  - [Supported HTML Elements](#supported-html-elements)
+- **[Advanced Usage](#advanced-usage)**
+  - [Getting Document Content](#getting-document-content)
+  - [Accessing PHPWord Instance](#accessing-phpword-instance)
+  - [Resetting the Converter](#resetting-the-converter)
+- **[Configuration](#configuration)**
+  - [Orientation](#orientation)
+- **[Testing](#testing)**
+- **[Examples](#examples)**
+  - [Invoice Example](#invoice-example)
+  - [Report with Tables](#report-with-tables)
+- **[CSS Support](#css-support)**
+- **[Images](#images)**
+- **[Changelog](#changelog)**
+- **[Contributing](#contributing)**
+- **[Security](#security)**
+- **[Credits](#credits)**
+- **[License](#license)**
 
 ## Requirements
 
