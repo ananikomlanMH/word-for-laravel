@@ -8,6 +8,7 @@ use WordForLaravel\Parsers\CssParser;
 use WordForLaravel\Renderers\Elements\HeadingRenderer;
 use WordForLaravel\Renderers\Elements\ImageRenderer;
 use WordForLaravel\Renderers\Elements\ListRenderer;
+use WordForLaravel\Renderers\Elements\PageNumberRenderer;
 use WordForLaravel\Renderers\Elements\ParagraphRenderer;
 use WordForLaravel\Renderers\Elements\TableRenderer;
 
@@ -21,6 +22,8 @@ class DocumentRenderer
 
     protected ListRenderer $listRenderer;
 
+    protected PageNumberRenderer $pageNumberRenderer;
+
     protected ImageRenderer $imageRenderer;
 
     public function __construct(
@@ -31,6 +34,7 @@ class DocumentRenderer
         $this->paragraphRenderer = new ParagraphRenderer($cssParser);
         $this->tableRenderer = new TableRenderer($cssParser);
         $this->listRenderer = new ListRenderer($cssParser);
+        $this->pageNumberRenderer = new PageNumberRenderer($cssParser);
         $this->imageRenderer = new ImageRenderer($cssParser);
     }
 
@@ -131,6 +135,9 @@ class DocumentRenderer
                 break;
             case 'table':
                 $this->tableRenderer->render($element, $container);
+                break;
+            case 'page-number':
+                $this->pageNumberRenderer->render($element, $container);
                 break;
             case 'ul':
             case 'ol':
