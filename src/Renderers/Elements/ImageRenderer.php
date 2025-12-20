@@ -202,7 +202,7 @@ class ImageRenderer extends BaseElementRenderer
         $imageData = @file_get_contents($url, false, $context);
 
         if ($imageData === false) {
-            throw new \RuntimeException('Failed to download image from: ' . $url);
+            throw new \RuntimeException('Failed to download image from: '.$url);
         }
 
         // Create temporary file

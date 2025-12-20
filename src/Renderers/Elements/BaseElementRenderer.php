@@ -30,7 +30,7 @@ abstract class BaseElementRenderer
         foreach ($node->childNodes as $child) {
             if ($child->nodeType === XML_TEXT_NODE) {
                 $text = $child->textContent;
-                if (!in_array(trim($text), ['', '0'], true)) {
+                if (! in_array(trim($text), ['', '0'], true)) {
                     $textRun->addText($text, $baseStyle);
                 }
             } elseif ($child->nodeType === XML_ELEMENT_NODE) {
@@ -118,7 +118,7 @@ abstract class BaseElementRenderer
                     $this->addInlineElements($child, $textRun, $style);
                 } else {
                     $text = $child->textContent;
-                    if (!in_array(trim($text), ['', '0'], true)) {
+                    if (! in_array(trim($text), ['', '0'], true)) {
                         $textRun->addText($text, $style);
                     }
                 }
