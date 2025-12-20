@@ -1,0 +1,32 @@
+name: build-assets
+
+on:
+  pull_request:
+    branches:
+      - 3.x
+    types:
+      - closed
+
+jobs:
+  npm-build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          ref: 3.x
+      - name: Set up Node
+        uses: actions/setup-node@v6
+      - name: Install dependencies
+        run: npm ci
+      - name: Build assets
+        run: npm run build
+      - name: Pull changes
+        run: git pull
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          branch: 3.x
+          commit_message: >
+            chore: build assets

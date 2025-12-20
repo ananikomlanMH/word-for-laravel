@@ -1,9 +1,12 @@
 <p align="center"><a href="https://github.com/ananikomlanMH/word-for-laravel" target="_blank"><img src="/art/logo.svg" width="400"></a></p>
 
-[![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%208.1-777bb4?style=flat-square&logo=php)](https://www.php.net/supported-versions.php)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE.md)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/ananikomlanmh/word-for-laravel.svg?style=flat-square)](https://packagist.org/packages/ananikomlanmh/word-for-laravel)
-[![Total Downloads](https://img.shields.io/packagist/dt/ananikomlanmh/word-for-laravel.svg?style=flat-square)](https://packagist.org/packages/ananikomlanmh/word-for-laravel)
+<p>
+    <a href="https://github.com/ananikomlanmh/word-for-laravel/actions"><img src="https://github.com/ananikomlanmh/word-for-laravel/actions/workflows/tests.yml/badge.svg" alt="Build Status"></a>
+    <a href="https://github.com/ananikomlanmh/word-for-laravel/actions/workflows/quality.yml"><img src="https://github.com/ananikomlanmh/word-for-laravel/actions/workflows/quality.yml/badge.svg" alt="Coding Standards" /></a>
+    <a href="https://packagist.org/packages/ananikomlanmh/word-for-laravel"><img src="https://img.shields.io/packagist/dt/ananikomlanmh/word-for-laravel" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/ananikomlanmh/word-for-laravel"><img src="https://img.shields.io/packagist/v/ananikomlanmh/word-for-laravel" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/ananikomlanmh/word-for-laravel"><img src="https://img.shields.io/packagist/l/ananikomlanmh/word-for-laravel" alt="License"></a>
+</p>
 
 Generate Word documents (.docx) from Laravel Blade templates using PHPWord under the hood. This package provides an elegant API for creating professional Word documents with the full power of Blade templating.
 
