@@ -62,6 +62,8 @@ php artisan vendor:publish --tag="word-for-laravel-config"
 ### Simple Document Generation
 
 ```php
+use WordForLaravel\Facades\WordForLaravel;
+
 // Generate and download a document
 return WordForLaravel::load('word.invoice', [
         'invoiceNumber' => 'INV-001',
@@ -75,6 +77,7 @@ return WordForLaravel::load('word.invoice', [
 
 ```php
 use Illuminate\Support\Facades\Storage;
+use WordForLaravel\Facades\WordForLaravel;
 
 // Save to the default disk
 WordForLaravel::load('word.report', $data)
@@ -110,6 +113,7 @@ WordForLaravel::load('word.contract', $data)
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use WordForLaravel\Facades\WordForLaravel;
 
 class DocumentController extends Controller
 {
@@ -222,6 +226,7 @@ The package supports standard HTML elements that are converted to Word format:
 Special utility tags handled by the parser:
 
 - **`<pagebreak orientation="..." />`**: splits the document into sections. Orientation can be `landscape`, `portrait`, `L`, or `P`.
+- **`<page-number format="..." restart="..." />`**: renders dynamic page numbers. Supported variables: `{PAGE}`, `{NUMPAGES}`, `{SECTIONPAGES}`.
 - **`<wordheader>...</wordheader>`**: content rendered in the section header.
 - **`<wordfooter>...</wordfooter>`**: content rendered in the section footer.
 
