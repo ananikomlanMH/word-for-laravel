@@ -117,7 +117,7 @@ class HtmlParser
      */
     protected function normalizeOrientation(?string $orientation): ?string
     {
-        if (empty($orientation)) {
+        if (in_array($orientation, [null, '', '0'], true)) {
             return null;
         }
 

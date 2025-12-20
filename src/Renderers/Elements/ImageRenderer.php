@@ -34,7 +34,7 @@ class ImageRenderer extends BaseElementRenderer
 
             // Add image to container
             $container->addImage($imageSource, $imageStyle);
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             // Fallback: add text indicating missing image
             $container->addText('[Image: '.basename($src).']', [
                 'color' => '999999',
@@ -83,26 +83,22 @@ class ImageRenderer extends BaseElementRenderer
         }
 
         // Display block centers the image
-        if (isset($cssStyles['display']) && $cssStyles['display'] === 'block') {
-            if (isset($cssStyles['margin-left']) && $cssStyles['margin-left'] === 'auto' &&
-                isset($cssStyles['margin-right']) && $cssStyles['margin-right'] === 'auto') {
-                $imageStyle['alignment'] = 'center';
-            }
+        if (isset($cssStyles['display']) && $cssStyles['display'] === 'block' && (isset($cssStyles['margin-left']) && $cssStyles['margin-left'] === 'auto' && isset($cssStyles['margin-right']) && $cssStyles['margin-right'] === 'auto')) {
+            $imageStyle['alignment'] = 'center';
         }
 
         // Margins
         if (isset($cssStyles['margin-top'])) {
             $imageStyle['marginTop'] = $this->convertDimensionToInches($cssStyles['margin-top']);
         }
+
         if (isset($cssStyles['margin-left'])) {
             $imageStyle['marginLeft'] = $this->convertDimensionToInches($cssStyles['margin-left']);
         }
 
         // Wrapping style from CSS
-        if (isset($cssStyles['position'])) {
-            if ($cssStyles['position'] === 'absolute') {
-                $imageStyle['wrappingStyle'] = 'behind';
-            }
+        if (isset($cssStyles['position']) && $cssStyles['position'] === 'absolute') {
+            $imageStyle['wrappingStyle'] = 'behind';
         }
 
         // Positioning
@@ -206,7 +202,7 @@ class ImageRenderer extends BaseElementRenderer
         $imageData = @file_get_contents($url, false, $context);
 
         if ($imageData === false) {
-            throw new \RuntimeException("Failed to download image from: {$url}");
+            throw new \RuntimeException('Failed to download image from: ' . $url);
         }
 
         // Create temporary file
@@ -306,7 +302,7 @@ class ImageRenderer extends BaseElementRenderer
                     'height' => $size[1],
                 ];
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             // Ignore errors
         }
 

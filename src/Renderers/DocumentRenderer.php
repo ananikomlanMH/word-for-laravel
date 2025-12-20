@@ -155,12 +155,13 @@ class DocumentRenderer
                             $this->renderElement($child, $container);
                         } elseif ($child->nodeType === XML_TEXT_NODE) {
                             $text = trim($child->textContent);
-                            if (! empty($text)) {
+                            if ($text !== '' && $text !== '0') {
                                 $container->addText($text);
                             }
                         }
                     }
                 }
+
                 break;
         }
     }

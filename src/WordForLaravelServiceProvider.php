@@ -2,6 +2,7 @@
 
 namespace WordForLaravel;
 
+use Illuminate\Foundation\Application;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -13,7 +14,7 @@ class WordForLaravelServiceProvider extends PackageServiceProvider
     {
         parent::register();
 
-        $this->app->singleton(WordForLaravel::class, function ($app) {
+        $this->app->singleton(WordForLaravel::class, function (Application $app): WordForLaravel {
             return new WordForLaravel(
                 $app['view'],
                 $app['files'],
@@ -30,7 +31,7 @@ class WordForLaravelServiceProvider extends PackageServiceProvider
             ->name('word-for-laravel')
             ->hasConfigFile()
             ->hasCommand(WordForLaravelCommand::class)
-            ->hasInstallCommand(function (InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
                     ->publishConfigFile();
             });

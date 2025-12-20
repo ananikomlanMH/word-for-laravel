@@ -123,11 +123,13 @@ class CssParser
                     if (in_array($value, ['bold', 'bolder', '700', '800', '900'])) {
                         $fontStyle['bold'] = true;
                     }
+
                     break;
                 case 'font-style':
                     if ($value === 'italic' || $value === 'oblique') {
                         $fontStyle['italic'] = true;
                     }
+
                     break;
                 case 'text-decoration':
                     if (strpos($value, 'underline') !== false) {
@@ -135,6 +137,7 @@ class CssParser
                     } elseif (strpos($value, 'line-through') !== false) {
                         $fontStyle['strikethrough'] = true;
                     }
+
                     break;
                 case 'background-color':
                 case 'background':
@@ -146,6 +149,7 @@ class CssParser
                     } elseif ($value === 'capitalize') {
                         $fontStyle['smallCaps'] = true;
                     }
+
                     break;
                 case 'vertical-align':
                     if ($value === 'super' || $value === 'superscript') {
@@ -153,6 +157,7 @@ class CssParser
                     } elseif ($value === 'sub' || $value === 'subscript') {
                         $fontStyle['subScript'] = true;
                     }
+
                     break;
             }
         }
@@ -186,6 +191,7 @@ class CssParser
                         $points = (int) str_replace('pt', '', $value);
                         $paragraphStyle['spacing'] = $points * 20; // Convert to twips
                     }
+
                     break;
                 case 'margin-left':
                 case 'padding-left':
@@ -254,6 +260,7 @@ class CssParser
                         $tableStyle['width'] = (int) str_replace('%', '', $value) * 50;
                         $tableStyle['unit'] = \PhpOffice\PhpWord\SimpleType\TblWidth::PERCENT;
                     }
+
                     break;
             }
         }
@@ -319,9 +326,11 @@ class CssParser
         if (strpos($size, 'pt') !== false) {
             return (int) str_replace('pt', '', $size);
         }
+
         if (strpos($size, 'px') !== false) {
             return (int) (str_replace('px', '', $size) * 0.75);
         }
+
         if (strpos($size, 'em') !== false) {
             return (int) (str_replace('em', '', $size) * 12);
         }
@@ -399,7 +408,7 @@ class CssParser
     {
         $fonts = explode(',', $fontFamily);
 
-        return trim(str_replace(['\'', '"'], '', $fonts[0]));
+        return trim(str_replace(["'", '"'], '', $fonts[0]));
     }
 
     /**
@@ -412,12 +421,15 @@ class CssParser
         if (strpos($value, 'pt') !== false) {
             return (int) (str_replace('pt', '', $value) * 20);
         }
+
         if (strpos($value, 'px') !== false) {
             return (int) (str_replace('px', '', $value) * 15);
         }
+
         if (strpos($value, 'in') !== false) {
             return (int) (str_replace('in', '', $value) * 1440);
         }
+
         if (strpos($value, 'cm') !== false) {
             return (int) (str_replace('cm', '', $value) * 567);
         }
@@ -435,6 +447,7 @@ class CssParser
         if (strpos($size, 'px') !== false) {
             return (int) (str_replace('px', '', $size) * 8);
         }
+
         if (strpos($size, 'pt') !== false) {
             return (int) (str_replace('pt', '', $size) * 8);
         }

@@ -32,9 +32,11 @@ class HeadingRenderer extends BaseElementRenderer
         if (! isset($fontStyle['size'])) {
             $fontStyle['size'] = $this->defaultSizes[$tag] ?? 12;
         }
+
         if (! isset($fontStyle['bold'])) {
             $fontStyle['bold'] = true;
         }
+
         if (! isset($fontStyle['name'])) {
             $fontStyle['name'] = 'Arial';
         }

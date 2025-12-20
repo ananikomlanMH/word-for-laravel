@@ -4,7 +4,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use WordForLaravel\Facades\WordForLaravel;
 
-it('can load a simple blade view and get content', function () {
+it('can load a simple blade view and get content', function (): void {
     // Arrange: create a minimal blade view under resources/views/word/
     $fs = new Filesystem;
     $viewDir = resource_path('views/word');
@@ -43,7 +43,7 @@ BLADE;
     $fs->delete($viewPath);
 });
 
-it('can save a generated document to storage', function () {
+it('can save a generated document to storage', function (): void {
     // Arrange
     Storage::fake('local');
 
@@ -63,7 +63,7 @@ it('can save a generated document to storage', function () {
     $fs->delete($viewPath);
 });
 
-it('can download a generated document', function () {
+it('can download a generated document', function (): void {
     // Arrange
     $fs = new Filesystem;
     $viewDir = resource_path('views/word');
@@ -85,7 +85,7 @@ it('can download a generated document', function () {
     $fs->delete($viewPath);
 });
 
-it('can set document properties and access PhpWord instance', function () {
+it('can set document properties and access PhpWord instance', function (): void {
     // Arrange
     $fs = new Filesystem;
     $viewDir = resource_path('views/word');

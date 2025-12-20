@@ -17,7 +17,7 @@ class WordForLaravelCommand extends Command
         $path = resource_path('views/word/'.$name.'.blade.php');
 
         if ($files->exists($path)) {
-            $this->error("Template [{$name}] already exists!");
+            $this->error(sprintf('Template [%s] already exists!', $name));
 
             return self::FAILURE;
         }
@@ -27,7 +27,7 @@ class WordForLaravelCommand extends Command
         $stub = $this->getStub();
         $files->put($path, $stub);
 
-        $this->info("Template [{$name}] created successfully at: {$path}");
+        $this->info(sprintf('Template [%s] created successfully at: %s', $name, $path));
 
         return self::SUCCESS;
     }

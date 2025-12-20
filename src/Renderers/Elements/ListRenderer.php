@@ -26,6 +26,7 @@ class ListRenderer extends BaseElementRenderer
         if (! isset($fontStyle['size'])) {
             $fontStyle['size'] = 12;
         }
+
         if (! isset($fontStyle['name'])) {
             $fontStyle['name'] = 'Arial';
         }
@@ -52,10 +53,10 @@ class ListRenderer extends BaseElementRenderer
         $itemFontStyle = array_merge($fontStyle, $this->cssParser->convertToFontStyle($itemCssStyle));
 
         // Check for nested lists
-        $nestedLists = $xpath->query('./ul | ./ol', $item);
+        $xpath->query('./ul | ./ol', $item);
 
         // Check if item has complex content (formatted text)
-        $hasComplexContent = $this->hasComplexContent($item);
+        $this->hasComplexContent($item);
 
         // Use ListItemRun for complex content
         $listItemRun = $container->addListItemRun($depth, null, $listStyle);
@@ -64,7 +65,7 @@ class ListRenderer extends BaseElementRenderer
         foreach ($item->childNodes as $child) {
             if ($child->nodeType === XML_TEXT_NODE) {
                 $text = trim($child->textContent);
-                if (! empty($text)) {
+                if ($text !== '' && $text !== '0') {
                     $listItemRun->addText($text, $itemFontStyle);
                 }
             } elseif ($child->nodeType === XML_ELEMENT_NODE) {

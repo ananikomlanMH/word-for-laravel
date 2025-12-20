@@ -3,7 +3,7 @@
 use WordForLaravel\Parsers\CssParser;
 use WordForLaravel\Parsers\HtmlParser;
 
-it('parses sections, header, footer and orientation via special tags', function () {
+it('parses sections, header, footer and orientation via special tags', function (): void {
     $css = new CssParser;
     $parser = new HtmlParser($css);
 

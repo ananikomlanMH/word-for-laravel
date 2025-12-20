@@ -2,7 +2,7 @@
 
 use Illuminate\Filesystem\Filesystem;
 
-it('creates a new word blade template via artisan command', function () {
+it('creates a new word blade template via artisan command', function (): void {
     $fs = new Filesystem;
     $viewDir = resource_path('views/word');
     $fs->ensureDirectoryExists($viewDir);

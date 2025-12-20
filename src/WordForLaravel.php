@@ -134,15 +134,19 @@ class WordForLaravel
         if (isset($properties['title'])) {
             $docProperties->setTitle($properties['title']);
         }
+
         if (isset($properties['creator'])) {
             $docProperties->setCreator($properties['creator']);
         }
+
         if (isset($properties['company'])) {
             $docProperties->setCompany($properties['company']);
         }
+
         if (isset($properties['subject'])) {
             $docProperties->setSubject($properties['subject']);
         }
+
         if (isset($properties['description'])) {
             $docProperties->setDescription($properties['description']);
         }

@@ -23,6 +23,7 @@ class ParagraphRenderer extends BaseElementRenderer
         if (! isset($fontStyle['size'])) {
             $fontStyle['size'] = 12;
         }
+
         if (! isset($fontStyle['name'])) {
             $fontStyle['name'] = 'Arial';
         }

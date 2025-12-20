@@ -92,6 +92,7 @@ class TableRenderer extends BaseElementRenderer
                     if (! isset($this->rowspanTracker[$rowIndex + 1])) {
                         $this->rowspanTracker[$rowIndex + 1] = [];
                     }
+
                     $this->rowspanTracker[$rowIndex + 1][$colIndex] =
                         $this->rowspanTracker[$rowIndex][$colIndex];
                 }
@@ -130,6 +131,7 @@ class TableRenderer extends BaseElementRenderer
                         if (! isset($this->rowspanTracker[$rowIndex + 1])) {
                             $this->rowspanTracker[$rowIndex + 1] = [];
                         }
+
                         $this->rowspanTracker[$rowIndex + 1][$col] =
                             $this->rowspanTracker[$rowIndex][$col];
                     }
@@ -178,6 +180,7 @@ class TableRenderer extends BaseElementRenderer
             $cellStyle['borderLeftSize'] = 6;
             $cellStyle['borderRightSize'] = 6;
         }
+
         if (! isset($cellStyle['borderTopColor'])) {
             $cellStyle['borderTopColor'] = 'DDDDDD';
             $cellStyle['borderBottomColor'] = 'DDDDDD';
@@ -220,6 +223,7 @@ class TableRenderer extends BaseElementRenderer
                         if (! isset($this->rowspanTracker[$nextRowIndex])) {
                             $this->rowspanTracker[$nextRowIndex] = [];
                         }
+
                         $this->rowspanTracker[$nextRowIndex][$currentCol] = $remainingRows - $r + 1;
                     }
                 }
@@ -241,6 +245,7 @@ class TableRenderer extends BaseElementRenderer
         if (! isset($fontStyle['size'])) {
             $fontStyle['size'] = 11;
         }
+
         if ($isHeader && ! isset($fontStyle['bold'])) {
             $fontStyle['bold'] = true;
         }
@@ -297,22 +302,13 @@ class TableRenderer extends BaseElementRenderer
         foreach ($cellNode->childNodes as $child) {
             if ($child->nodeType === XML_TEXT_NODE) {
                 $text = trim($child->textContent);
-                if (! empty($text)) {
+                if ($text !== '' && $text !== '0') {
                     $tableCell->addText($text, $baseFontStyle);
                 }
             } elseif ($child->nodeType === XML_ELEMENT_NODE) {
                 $tag = strtolower($child->nodeName);
-
-                // Handle paragraph in cell
-                if ($tag === 'p') {
-                    $textRun = $tableCell->addTextRun();
-                    $this->addInlineElements($child, $textRun, $baseFontStyle);
-                }
-                // Handle other inline elements
-                else {
-                    $textRun = $tableCell->addTextRun();
-                    $this->addInlineElements($child, $textRun, $baseFontStyle);
-                }
+                $textRun = $tableCell->addTextRun();
+                $this->addInlineElements($child, $textRun, $baseFontStyle);
             }
         }
     }

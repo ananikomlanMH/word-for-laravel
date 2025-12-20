@@ -30,7 +30,7 @@ abstract class BaseElementRenderer
         foreach ($node->childNodes as $child) {
             if ($child->nodeType === XML_TEXT_NODE) {
                 $text = $child->textContent;
-                if (! empty(trim($text))) {
+                if (!in_array(trim($text), ['', '0'], true)) {
                     $textRun->addText($text, $baseStyle);
                 }
             } elseif ($child->nodeType === XML_ELEMENT_NODE) {
@@ -68,40 +68,48 @@ abstract class BaseElementRenderer
                         if (! isset($style['bgColor'])) {
                             $style['bgColor'] = 'FFFF00'; // Yellow
                         }
+
                         break;
                     case 'code':
                         if (! isset($style['name'])) {
                             $style['name'] = 'Courier New';
                         }
+
                         if (! isset($style['bgColor'])) {
                             $style['bgColor'] = 'F5F5F5';
                         }
+
                         break;
                     case 'small':
                         if (! isset($style['size'])) {
                             $style['size'] = max(8, ($baseStyle['size'] ?? 12) - 2);
                         }
+
                         break;
                     case 'sub':
                         $style['subScript'] = true;
                         if (! isset($style['size'])) {
                             $style['size'] = max(8, ($baseStyle['size'] ?? 12) - 2);
                         }
+
                         break;
                     case 'sup':
                         $style['superScript'] = true;
                         if (! isset($style['size'])) {
                             $style['size'] = max(8, ($baseStyle['size'] ?? 12) - 2);
                         }
+
                         break;
                     case 'a':
                         // Links
                         if (! isset($style['color'])) {
                             $style['color'] = '0000FF';
                         }
+
                         if (! isset($style['underline'])) {
                             $style['underline'] = 'single';
                         }
+
                         break;
                 }
 
@@ -110,7 +118,7 @@ abstract class BaseElementRenderer
                     $this->addInlineElements($child, $textRun, $style);
                 } else {
                     $text = $child->textContent;
-                    if (! empty(trim($text))) {
+                    if (!in_array(trim($text), ['', '0'], true)) {
                         $textRun->addText($text, $style);
                     }
                 }

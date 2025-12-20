@@ -2,7 +2,7 @@
 
 use WordForLaravel\Parsers\CssParser;
 
-it('converts font styles correctly', function () {
+it('converts font styles correctly', function (): void {
     $p = new CssParser;
 
     $font = $p->convertToFontStyle([
@@ -28,7 +28,7 @@ it('converts font styles correctly', function () {
         ->and($font['subScript'])->toBeTrue();
 });
 
-it('converts paragraph styles correctly', function () {
+it('converts paragraph styles correctly', function (): void {
     $p = new CssParser;
 
     $para = $p->convertToParagraphStyle([
@@ -48,7 +48,7 @@ it('converts paragraph styles correctly', function () {
         ->and($para['indentation']['firstLine'])->toBe(240); // 12pt * 20
 });
 
-it('converts table and cell styles including border and width', function () {
+it('converts table and cell styles including border and width', function (): void {
     $p = new CssParser;
 
     $table = $p->convertToTableStyle([

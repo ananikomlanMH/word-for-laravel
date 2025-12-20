@@ -28,10 +28,9 @@ class PageNumberRenderer extends BaseElementRenderer
         // Get format attribute (default: {PAGE})
         $format = $node->getAttribute('format') ?: '{PAGE}';
 
-        // Get restart attribute
-        $restart = $node->hasAttribute('restart')
-            ? filter_var($node->getAttribute('restart'), FILTER_VALIDATE_BOOLEAN)
-            : false;
+        if ($node->hasAttribute('restart')) {
+            filter_var($node->getAttribute('restart'), FILTER_VALIDATE_BOOLEAN);
+        }
 
         // Get computed style
         $cssStyle = $this->getComputedStyle($node);
@@ -43,6 +42,7 @@ class PageNumberRenderer extends BaseElementRenderer
         if (! isset($fontStyle['size'])) {
             $fontStyle['size'] = 11;
         }
+
         if (! isset($fontStyle['name'])) {
             $fontStyle['name'] = 'Arial';
         }
@@ -146,7 +146,7 @@ class PageNumberRenderer extends BaseElementRenderer
 
         $styleString = '';
         foreach ($style as $property => $value) {
-            $styleString .= "{$property}: {$value}; ";
+            $styleString .= sprintf('%s: %s; ', $property, $value);
         }
 
         return sprintf(
@@ -181,12 +181,12 @@ class PageNumberRenderer extends BaseElementRenderer
 
         $titleStyleString = '';
         foreach ($titleStyle as $property => $value) {
-            $titleStyleString .= "{$property}: {$value}; ";
+            $titleStyleString .= sprintf('%s: %s; ', $property, $value);
         }
 
         $pageStyleString = '';
         foreach ($pageStyle as $property => $value) {
-            $pageStyleString .= "{$property}: {$value}; ";
+            $pageStyleString .= sprintf('%s: %s; ', $property, $value);
         }
 
         return sprintf(

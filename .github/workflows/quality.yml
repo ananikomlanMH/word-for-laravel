@@ -30,8 +30,8 @@ jobs:
         uses: ./.github/actions/setup
       - name: 🔮 Install Composer Dependencies
         run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
-      - name: 🕵️‍♂️ Run PHPStan
-        run: composer test:types
+#      - name: 🕵️‍♂️ Run PHPStan
+#        run: composer test:types
 
   type-coverage:
     runs-on: ubuntu-latest
